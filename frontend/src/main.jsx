@@ -10,6 +10,7 @@ import {
 	Route,
 } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
+import Admin from "./design/Admin"
 import Categories from "./pages/Categories.jsx"
 import CategoryInput from "./pages/CategoryInput.jsx"
 import CategoryUpdate from "./pages/CategoryUpdate.jsx"
@@ -24,17 +25,19 @@ import ItemUpdate from "./pages/ItemUpdate.jsx"
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/" element={<Layout />}>
-			<Route index element={<Categories />} />
-			<Route path="addCategory" element={<CategoryInput />} />
-			<Route path="updateCategory/:id/:name" element={<CategoryUpdate />} />
+			<Route path="admin" element={<Admin />}>
+				<Route index element={<Categories />} />
+				<Route path="addCategory" element={<CategoryInput />} />
+				<Route path="updateCategory/:id/:name" element={<CategoryUpdate />} />
 
-			<Route path="items" element={<ItemLayout />}>
-				<Route index element={<Items />} />
-				<Route path="addItem" element={<ItemInput />} />
-				<Route
-					path="updateItem/:id/:name/:price/:quantity/:category/:description"
-					element={<ItemUpdate />}
-				/>
+				<Route path="items" element={<ItemLayout />}>
+					<Route index element={<Items />} />
+					<Route path="addItem" element={<ItemInput />} />
+					<Route
+						path="updateItem/:id/:name/:price/:quantity/:category/:description"
+						element={<ItemUpdate />}
+					/>
+				</Route>
 			</Route>
 		</Route>
 	)

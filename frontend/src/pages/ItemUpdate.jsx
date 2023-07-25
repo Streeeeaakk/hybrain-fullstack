@@ -60,7 +60,7 @@ export default function ItemInput() {
 			try {
 				const res = await updateItem(values).unwrap()
 				itemsQuery.refetch()
-				navigate("/items")
+				navigate("..")
 				toast.success(`Item Added ${values.name}`)
 			} catch (err) {
 				toast.error(err?.data?.message || err.error)
@@ -108,7 +108,7 @@ export default function ItemInput() {
 								Submit
 							</Button>
 
-							<Link to="/items" relative="path" className="back-button">
+							<Link to="/admin/items" relative="path" className="back-button">
 								<Button variant="contained" color="primary" type="button">
 									Cancel
 								</Button>

@@ -67,7 +67,7 @@ export default function CategoryInput() {
 							Submit
 						</Button>
 
-						<Link to=".." relative="path" className="back-button">
+						<Link to="/admin/" relative="path" className="back-button">
 							<Button variant="contained" color="primary" type="button">
 								Cancel
 							</Button>

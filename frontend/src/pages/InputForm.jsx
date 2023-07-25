@@ -67,8 +67,8 @@ export default function InputForm() {
 								},
 							]}
 						/>
-						<br />
 
+						<br />
 						<CheckboxComponent name="check" label="Checkbox" formik={props} />
 						<br />
 

@@ -77,7 +77,7 @@ export default function Items() {
 									const res = await deleteItem({id: data._id}).unwrap()
 									itemsQuery.refetch()
 									toast.success(`Item ${data.name} Successfuly Deleted`)
-									navigate("/items")
+									navigate("/admin/items")
 								} catch (err) {
 									toast.error(err?.data?.message || err.error)
 								}

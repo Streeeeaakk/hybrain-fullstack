@@ -24,7 +24,6 @@ export default function Layout() {
 	return (
 		<StyledMain>
 			<Sidebar />
-
 			<ToastContainer />
 			<StyledLayout>
 				<main>

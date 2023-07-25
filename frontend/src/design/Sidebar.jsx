@@ -36,12 +36,16 @@ export default function Sidebar() {
 
 	const navigation = [
 		{
+			name: "Login",
+			path: "/login",
+		},
+		{
 			name: "Categories",
-			path: "",
+			path: "/admin/",
 		},
 		{
 			name: "Items",
-			path: "items",
+			path: "/admin/items",
 		},
 	]
 
@@ -79,24 +83,6 @@ export default function Sidebar() {
 	)
 
 	return (
-		// <div className="sidebar--nav">
-		// 	<Link to="/" className="sidenav">
-		// 		Home
-		// 	</Link>
-
-		// 	<Link to="services" className="sidenav">
-		// 		Services
-		// 	</Link>
-
-		// 	<Link to="clients" className="sidenav">
-		// 		Clients
-		// 	</Link>
-
-		// 	<Link to="contacts" className="sidenav">
-		// 		Contacts
-		// 	</Link>
-		// </div>
-
 		<div>
 			{["left"].map((anchor) => (
 				<React.Fragment key={anchor}>

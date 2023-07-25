@@ -69,7 +69,7 @@ export default function Categories() {
 									const res = await deleteCategoryItem({id: data._id}).unwrap()
 									categQuery.refetch()
 									toast.success("Category Successfuly Deleted")
-									navigate("/")
+									navigate("/admin")
 								} catch (err) {
 									toast.error(err?.data?.message || err.error)
 								}

@@ -8,8 +8,11 @@ import {
 } from "../controllers/categoryController.js"
 
 router.get("/", showCategory)
+
 router.post("/addCategory", addCategory)
+
 router.put("/updateCategory", updateCategory)
+
 router.delete("/deleteCategory", deleteCategory)
 
 export default router
