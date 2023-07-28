@@ -1,18 +1,19 @@
 import * as Yup from "yup"
 import {Button} from "@mui/material"
 import {Form, Formik} from "formik"
-import ItemInputComponent from "../components/ItemInputComponent.jsx"
-import {Link, useNavigate} from "react-router-dom"
-import {Loader} from "../components/Loader"
-import SelectComponent from "../components/SelectComponent.jsx"
-import TextAreaComponent from "../components/TextAreaComponent.jsx"
+import ItemInputComponent from "../../components/ItemInputComponent.jsx"
+import {Link, useNavigate, useParams} from "react-router-dom"
+import {Loader} from "../../components/Loader"
+import SelectComponent from "../../components/SelectComponent.jsx"
+import TextAreaComponent from "../../components/TextAreaComponent.jsx"
 import {toast} from "react-toastify"
 import {useDispatch} from "react-redux"
-import {useCategoriesQuery} from "../slices/categroyApiSlice.js"
-import {useItemsQuery} from "../slices/itemsApiSlice.js"
-import {useAddItemMutation} from "../slices/itemsApiSlice.js"
+import {useCategoriesQuery} from "../../slices/categroyApiSlice.js"
+import {useItemsQuery, useUpdateItemMutation} from "../../slices/itemsApiSlice.js"
 
 export default function ItemInput() {
+	const {id, name, price, quantity, category, description} = useParams()
+
 	const navigate = useNavigate()
 
 	const categQuery = useCategoriesQuery()
@@ -21,9 +22,19 @@ export default function ItemInput() {
 
 	const {data: categories, isFetching, isLoading} = categQuery
 
-	const [addItem, {data, error, isSuccess}] = useAddItemMutation()
+	const [updateItem, {data, error, isSuccess}] = useUpdateItemMutation()
+
+	const initialValues = {
+		id: id,
+		name: name,
+		price: price,
+		quantity: quantity,
+		category: category,
+		description: description,
+	}
 
 	let selectData = null
+
 	if (!isLoading && !isFetching) {
 		selectData = categories.map((data) => {
 			return {
@@ -31,14 +42,6 @@ export default function ItemInput() {
 				value: data.name,
 			}
 		})
-	}
-
-	const initialValues = {
-		name: "",
-		price: "",
-		quantity: "",
-		category: "",
-		description: "",
 	}
 
 	const validationSchema = Yup.object({
@@ -55,7 +58,7 @@ export default function ItemInput() {
 			return
 		} else {
 			try {
-				const res = await addItem(values).unwrap()
+				const res = await updateItem(values).unwrap()
 				itemsQuery.refetch()
 				navigate("..")
 				toast.success(`Item Added ${values.name}`)
@@ -105,7 +108,7 @@ export default function ItemInput() {
 								Submit
 							</Button>
 
-							<Link to=".." relative="path" className="back-button">
+							<Link to="/admin/items" relative="path" className="back-button">
 								<Button variant="contained" color="primary" type="button">
 									Cancel
 								</Button>

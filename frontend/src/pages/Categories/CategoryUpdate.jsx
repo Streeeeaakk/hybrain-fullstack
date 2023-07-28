@@ -3,9 +3,9 @@ import {Form, Formik, useFormik} from "formik"
 import {Link, useNavigate, useParams} from "react-router-dom"
 import {Button} from "@mui/material"
 import * as Yup from "yup"
-import CategoryUpdateComponent from "../components/CategoryUpdateComponent"
-import {useUpdateCategoryMutation} from "../slices/categroyApiSlice"
-import {useCategoriesQuery} from "../slices/categroyApiSlice"
+import CategoryUpdateComponent from "../../components/CategoryUpdateComponent"
+import {useUpdateCategoryMutation} from "../../slices/categroyApiSlice"
+import {useCategoriesQuery} from "../../slices/categroyApiSlice"
 import {useDispatch, useSelector} from "react-redux"
 import {toast} from "react-toastify"
 
@@ -33,7 +33,7 @@ export default function CategoryUpdate() {
 			try {
 				const res = await updateCategory({id: id, name: values.name}).unwrap()
 				categQuery.refetch()
-				navigate("/")
+				navigate("/admin")
 				toast.success(`${values.name} Category Updated`)
 			} catch (error) {
 				toast.error(error?.data?.message || error.error)

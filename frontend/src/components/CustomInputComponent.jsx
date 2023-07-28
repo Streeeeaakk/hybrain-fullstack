@@ -10,7 +10,7 @@ export default function CustomInputComponent(props) {
 					<div>
 						<TextField
 							type={props.type}
-							id="outlined-required"
+							id={props.name}
 							label={props.placeholder}
 							{...field}
 							placeholder={props.placeholder}

@@ -10,10 +10,12 @@ import {Button, styled} from "@mui/material"
 import {useState, useEffect} from "react"
 import {Link, useNavigate} from "react-router-dom"
 import {useDispatch, useSelector} from "react-redux"
-import {useCategoriesQuery} from "../slices/categroyApiSlice"
-import {useDeleteCategoryMutation} from "../slices/categroyApiSlice"
+import {
+	useDeleteCategoryMutation,
+	useCategoriesQuery,
+} from "../../slices/categroyApiSlice"
 import {toast} from "react-toastify"
-import {Loader} from "../components/Loader"
+import {Loader} from "../../components/Loader"
 
 const TableRowStyled = styled(TableRow)`
 	&:nth-of-type(odd) {
